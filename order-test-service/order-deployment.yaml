@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-test-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-test-service
+
+  template:
+    metadata:
+      labels:
+        app: order-test-service
+
+    spec:
+      containers:
+        - name: order-test-service
+          image: microservice-test-project-order-test-service:latest
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 8082
